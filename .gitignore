@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+data/brain/
+data/datasets/*
+data/runs/*
+models/*
+!models/.gitkeep
+.cache/

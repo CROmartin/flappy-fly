@@ -1,0 +1,53 @@
+{
+  "flybrain_version": "0.1.0",
+  "device": "cpu",
+  "neurons": 166700,
+  "connections": 25582938,
+  "dt": 0.02,
+  "populations": {
+    "LC4": {
+      "all": 126,
+      "L": 71,
+      "R": 55
+    },
+    "LPLC2": {
+      "all": 185,
+      "L": 94,
+      "R": 91
+    },
+    "LC10a": {
+      "all": 275,
+      "L": 135,
+      "R": 140
+    },
+    "LPLC1": {
+      "all": 134,
+      "L": 68,
+      "R": 66
+    },
+    "DNp01": {
+      "all": 2,
+      "L": 1,
+      "R": 1
+    },
+    "descending_neuron": {
+      "all": 1314,
+      "L": 656,
+      "R": 648
+    }
+  },
+  "trace_shape": [
+    1314
+  ],
+  "reset_signature": "(seed: 'int | None' = None) -> 'None'",
+  "experiments": {
+    "quiet": {
+      "dnp01_mean_trace": 0.0,
+      "step_ms_including_jit": 18.58500041998923
+    },
+    "loom": {
+      "dnp01_mean_trace": 4.698248522281647,
+      "step_ms_including_jit": 3.9070874999742955
+    }
+  }
+}
