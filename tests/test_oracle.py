@@ -29,3 +29,13 @@ def test_oracle_better_than_random():
         scores.append(sum(result) / len(result))
     assert scores[0] >= 5
     assert scores[0] > scores[1] + 3
+
+
+def test_dagger_teacher_queries_follow_actual_actions():
+    c = OracleController()
+    s = replace(FlappyEnv().state, bird_y=400, bird_velocity_y=150, next_gap_center_y=280)
+    assert c.query(s) == c.query(s) == 1
+    c.observe_action(s, 0)
+    assert c.query(replace(s, elapsed_time=.02)) == 1
+    c.observe_action(s, 1)
+    assert c.query(replace(s, elapsed_time=.02)) == 0

@@ -13,11 +13,13 @@ class Renderer:
         self.font = pygame.font.Font(None, 25)
         self.small = pygame.font.Font(None, 20)
         self.title = pygame.font.Font(None, 48)
+        from flappy_fly.ui.dashboard import Dashboard
+        self.dashboard = Dashboard(config)
 
     def text(self, text, position, color=(221, 236, 229), font=None):
         self.screen.blit((font or self.font).render(str(text), True, color), position)
 
-    def draw(self, env, mode, best, fps, action, controller, history=()):
+    def draw(self, env, mode, best, fps, action, controller, history=(), notice='', mean_frame_ms=0):
         g = self.config.game
         s = env.state
         self.screen.fill((12, 23, 32))
@@ -47,15 +49,21 @@ class Renderer:
         self.text(f'SCORE {s.score:02d}   BEST {best:02d}', (26, 62), (156, 223, 169))
         self.text(f'{mode.upper()}  |  {fps:.0f} FPS', (26, g.height - 29), font=self.small)
         self.text('SPACE flap    R restart    ESC quit', (280, g.height - 29), font=self.small)
-        self.text('FROZEN CONNECTOME', (g.width + 24, 26), (133, 229, 189))
-        self.text('Dashboard awaiting neural integration', (g.width + 24, 66), font=self.small)
+        self.dashboard.draw(self, env, controller, action, history)
+        self.text(f'Frame compute {mean_frame_ms:.1f} ms', (g.width + 24, 545), font=self.small)
+        self.text('1 human  2 random  3 oracle  4 instinct  5 brain', (26, 91), font=self.small)
+        if notice:
+            self.text(notice[:85], (26, 116), (255, 185, 130), font=self.small)
         if not s.alive:
-            overlay = pygame.Surface((g.width - 60, 160), pygame.SRCALPHA)
+            overlay = pygame.Surface((g.width - 60, 330), pygame.SRCALPHA)
             overlay.fill((10, 18, 26, 235))
-            self.screen.blit(overlay, (30, 230))
+            self.screen.blit(overlay, (30, 208))
             self.text('THE FLY HAS MADE A DECISION.', (56, 260))
             self.text('Unfortunately, it was wrong.', (56, 295))
             self.text('Press R to try the same seed again.', (56, 344), font=self.small)
+        if not s.alive:
+            from flappy_fly.ui.plots import death_analysis
+            death_analysis(self, history)
         pygame.display.flip()
 
     def close(self):
