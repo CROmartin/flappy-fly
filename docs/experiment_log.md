@@ -32,3 +32,29 @@ fixed by using public numba.set_num_threads without changing its environment.
 Frozen-brain tests compare weights before and after simulation, and replay traces
 after public seeded resets. CPU timing includes cold JIT on the first episode;
 subsequent episode timings are measured separately.
+
+## Recorded outcomes
+
+Initial neural readout: test precision .1035, recall .7990, F1 .1833. Closed loop
+(seeds 10000–10029, 750 steps): mean pipes .0667, max 2, mean survival 3.308 s.
+Random: .2333 mean pipes. Oracle: 6.7. Instinct and direct logistic v1: zero.
+No tuning was performed after seeing this benchmark.
+
+DAgger: neural v1 controls 30 fresh seeds 1000–1029, adding 4,857 states and 181
+teacher FLAP labels. Combined data: 41,249 samples / 80 episodes. Existing held-out
+splits are unchanged. Same 20-component/L2=.1 readout is refit; direct logistic v2
+is also refit on exactly the combined data. Physics, encoder and threshold remain
+unchanged. Neural v2 test F1 .1766; 30-seed benchmark mean pipes zero. Direct v2
+also scores zero. DAgger did not improve this configuration.
+
+All per-controller episodes, truncation flags, survival measures and class metrics
+are preserved in `docs/results/`. Benchmark seeds are reused for paired version
+comparison, not presented as an independent second confirmation. This small result
+does not establish that connectomes are useless; it shows this interface/readout
+has not produced a useful policy. Further encoder or threshold work would be a
+new explicitly recorded experiment, not a silent replacement of these results.
+
+The first collector's brain timing metadata refers to its last episode; sidecars
+now explicitly label that scope. Logs contain each episode's timing. The collector
+was corrected to accumulate all neural steps for future runs. Evaluation timing
+already accumulated all evaluated episodes. No neural samples or outcomes changed.

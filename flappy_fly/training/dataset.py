@@ -116,4 +116,6 @@ def merge_datasets(paths, output):
         chunks.append(arrays)
     combined = {k: np.concatenate([a[k] for a in chunks]) for k in REQUIRED}
     return save_dataset(output, combined, {**first, 'collection_policy': 'aggregated',
-                         'source_datasets': [str(p) for p in paths]})
+                         'source_datasets': [{'path': str(p), 'sha256': meta['sha256']} for p, (_, meta) in zip(paths, loaded)],
+                         'episode_results': [row for _, meta in loaded for row in meta.get('episode_results', [])],
+                         'mean_brain_step_ms': None, 'timing_scope': 'see source dataset timings'})

@@ -8,3 +8,6 @@ data/runs/*
 models/*
 !models/.gitkeep
 .cache/
+
+# Local Codex permission preferences are machine-specific.
+.codex/

@@ -10,7 +10,7 @@ from .dataset import REQUIRED, episode_splits, save_dataset
 
 def collect(output, episodes=50, seed=0, config=None, max_steps=None, model=None):
     config = config or Config()
-    max_steps = max_steps or config.training.max_steps
+    max_steps = config.training.max_steps if max_steps is None else max_steps
     if episodes <= 0 or max_steps <= 0:
         raise ValueError('episodes and max_steps must be positive')
     roles = ['train'] * episodes if model else episode_splits(episodes)
@@ -24,6 +24,8 @@ def collect(output, episodes=50, seed=0, config=None, max_steps=None, model=None
             raise ValueError('DAgger collection requires new seeds')
     rows = {key: [] for key in REQUIRED}
     results = []
+    total_neural_seconds = 0.0
+    total_neural_steps = 0
     for episode in range(episodes):
         episode_seed = seed + episode
         env = FlappyEnv(episode_seed, config)
@@ -50,6 +52,8 @@ def collect(output, episodes=50, seed=0, config=None, max_steps=None, model=None
             _, _, done, _ = env.step(action)
             if done:
                 break
+        total_neural_seconds += adapter.total_step_seconds
+        total_neural_steps += adapter.neural_steps
         results.append({'seed': episode_seed, 'score': env.score, 'steps': env.steps, 'truncated': env.alive})
         print(f'episode {episode + 1}/{episodes} seed={episode_seed} score={env.score} '
               f'samples={len(rows["oracle_action"])} brain={adapter.mean_step_ms:.2f}ms', flush=True)
@@ -59,7 +63,8 @@ def collect(output, episodes=50, seed=0, config=None, max_steps=None, model=None
                                              else np.float64 if key == 'states' else np.int64)
         arrays[key] = np.asarray(values, dtype=dtype)
     metadata = save_dataset(output, arrays, {**adapter.metadata(), 'config': config.to_dict(),
-        'encoder_channels': CHANNELS, 'collection_policy': 'dagger' if learner else 'oracle',
+        'mean_brain_step_ms': 1000 * total_neural_seconds / total_neural_steps,
+        'timing_scope': 'all collected neural steps, including initial JIT', 'encoder_channels': CHANNELS, 'collection_policy': 'dagger' if learner else 'oracle',
         'learner_model': str(model) if model else None, 'max_steps': max_steps, 'episode_results': results})
     print(f'Saved {output}: {metadata["class_counts"]}', flush=True)
     return metadata

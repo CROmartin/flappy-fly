@@ -24,5 +24,26 @@ def test_human_input_and_death_render():
                 break
         renderer.draw(env, 'human', 0, 50, 0, controller, history.rows)
         assert renderer.screen.get_size() == (1120, 600)
+        assert tuple(renderer.screen.get_at((900, 10)))[:3] == (12, 23, 32)
     finally:
         renderer.close()
+
+
+def test_play_loop_space_restart_and_escape(monkeypatch):
+    import pygame
+    from flappy_fly.ui.play import play
+    from flappy_fly.game.renderer import Renderer
+    seen = []
+    events = iter([[pygame.event.Event(pygame.KEYDOWN, key=pygame.K_SPACE)],
+                   [pygame.event.Event(pygame.KEYDOWN, key=pygame.K_r)],
+                   [pygame.event.Event(pygame.KEYDOWN, key=pygame.K_ESCAPE)]])
+    monkeypatch.setattr(pygame.event, 'get', lambda: next(events))
+    original = Renderer.draw
+    def capture(self, env, *args, **kwargs):
+        seen.append(env.state)
+        original(self, env, *args, **kwargs)
+    monkeypatch.setattr(Renderer, 'draw', capture)
+    play(max_steps=3)
+    assert seen[0].bird_velocity_y < 0
+    assert seen[1].elapsed_time == Config().physics.dt
+    assert seen[1].bird_velocity_y > 0

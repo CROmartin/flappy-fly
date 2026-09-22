@@ -23,6 +23,7 @@ class Renderer:
         g = self.config.game
         s = env.state
         self.screen.fill((12, 23, 32))
+        self.screen.set_clip(pygame.Rect(0, 0, g.width, g.height))
         pygame.draw.rect(self.screen, (19, 42, 49), (0, 0, g.width, g.height))
         for i in range(12):
             x = int((i * 83 - s.elapsed_time * 10) % g.width)
@@ -35,6 +36,9 @@ class Renderer:
                 pygame.draw.rect(self.screen, (100, 196, 140), rect, width=2, border_radius=7)
         pygame.draw.rect(self.screen, (29, 62, 52), (0, g.height - g.ground_height, g.width, g.ground_height))
         x, y = int(g.fly_x), int(s.bird_y)
+        if action and s.alive:
+            for i in range(5):
+                pygame.draw.circle(self.screen, (160, 231, 187), (x - 24 - i * 7, y + 9 + i * 3), max(1, 4 - i))
         wing = int(5 * math.sin(s.elapsed_time * 75))
         pygame.draw.ellipse(self.screen, (188, 231, 228), (x - 18, y - 23 - wing, 25, 16))
         pygame.draw.ellipse(self.screen, (159, 210, 214), (x - 4, y - 26 + wing, 26, 15))
@@ -49,7 +53,8 @@ class Renderer:
         self.text(f'SCORE {s.score:02d}   BEST {best:02d}', (26, 62), (156, 223, 169))
         self.text(f'{mode.upper()}  |  {fps:.0f} FPS', (26, g.height - 29), font=self.small)
         self.text('SPACE flap    R restart    ESC quit', (280, g.height - 29), font=self.small)
-        self.dashboard.draw(self, env, controller, action, history)
+        self.screen.set_clip(None)
+        self.dashboard.draw(self, env, controller, action, history, mode)
         self.text(f'Frame compute {mean_frame_ms:.1f} ms', (g.width + 24, 545), font=self.small)
         self.text('1 human  2 random  3 oracle  4 instinct  5 brain', (26, 91), font=self.small)
         if notice:

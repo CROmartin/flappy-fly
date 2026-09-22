@@ -1,0 +1,232 @@
+{
+  "created_at": "2026-09-22T20:15:23.090117+00:00",
+  "git_commit": "cb82a8511348a8b41223f62b94bf71609b278d1a",
+  "git_dirty": true,
+  "schema_version": 1,
+  "model_kind": "direct",
+  "flybrain_version": "0.1.0",
+  "config": {
+    "game": {
+      "width": 720,
+      "height": 600,
+      "ground_height": 40,
+      "fly_x": 170.0,
+      "fly_radius": 12.0,
+      "pipe_width": 72.0,
+      "pipe_speed": 155.0,
+      "pipe_spacing": 280.0,
+      "gap_size": 190.0,
+      "gap_margin": 55.0,
+      "max_gap_change": 95.0
+    },
+    "physics": {
+      "dt": 0.02,
+      "gravity": 850.0,
+      "flap_velocity": -270.0,
+      "max_fall_speed": 480.0
+    },
+    "encoder": {
+      "looming_gain": 0.8,
+      "target_gain": 0.8,
+      "velocity_gain": 0.8,
+      "sensor_range": 450.0,
+      "vertical_error_range": 160.0,
+      "max_fall_speed": 480.0,
+      "max_rise_speed": 270.0
+    },
+    "brain": {
+      "device": "auto",
+      "dt": 0.02,
+      "trace_tau": 0.1,
+      "brain_steps_per_action": 1,
+      "threads": 4,
+      "instinct_threshold": 0.8
+    },
+    "control": {
+      "decision_threshold": 0.5,
+      "flap_cooldown": 0.12,
+      "oracle_horizon": 0.2,
+      "oracle_offset": 20.0,
+      "oracle_deadband": 12.0,
+      "ceiling_margin": 65.0,
+      "random_flap_probability": 0.06
+    },
+    "training": {
+      "seed": 42,
+      "max_steps": 1500,
+      "components": 20,
+      "regularization": 0.1
+    },
+    "ui": {
+      "panel_width": 400,
+      "history_steps": 100,
+      "smoothing": 0.85
+    }
+  },
+  "feature_count": 3,
+  "feature_indices": [],
+  "device": "cpu",
+  "training_dataset": "data/datasets/oracle_v1.npz",
+  "dataset_sha256": "8d5c1da2acd9865712c711649de92278a6e9ac797b10e0d286603c0bc3f303db",
+  "dataset_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "training_samples": 1730,
+  "class_counts": {
+    "WAIT": 35155,
+    "FLAP": 1237,
+    "percent_flap": 3.399098703011651
+  },
+  "balanced_class_counts": {
+    "WAIT": 865,
+    "FLAP": 865,
+    "percent_flap": 50.0
+  },
+  "split_seeds": {
+    "train": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "validation": [
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41
+    ],
+    "test": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ]
+  },
+  "metrics": {
+    "validation": {
+      "samples": 5144,
+      "precision_flap": 0.18058455114822547,
+      "recall_flap": 1.0,
+      "f1_flap": 0.30592396109637493,
+      "accuracy": 0.8473950233281493,
+      "confusion_matrix": [
+        [
+          4186,
+          785
+        ],
+        [
+          0,
+          173
+        ]
+      ],
+      "threshold": 0.5
+    },
+    "test": {
+      "samples": 5785,
+      "precision_flap": 0.17704626334519574,
+      "recall_flap": 1.0,
+      "f1_flap": 0.30083144368858655,
+      "accuracy": 0.8401037165082109,
+      "confusion_matrix": [
+        [
+          4661,
+          925
+        ],
+        [
+          0,
+          199
+        ]
+      ],
+      "threshold": 0.5
+    }
+  },
+  "cv_auc_balanced": 0.9963253467696159,
+  "sha256": "8da6017617d1022cf5eba43c9915c0c7235ac9403cc7d614190bdcfdaefb7647"
+}

@@ -9,13 +9,15 @@ class Dashboard:
     def reset(self):
         self.smoothed.clear()
 
-    def draw(self, renderer, env, controller, action, history):
+    def draw(self, renderer, env, controller, action, history, mode):
         import pygame
         x = self.config.game.width + 24
         s = env.state
         adapter = getattr(controller, 'adapter', None)
         renderer.text('CONNECTOME ONLINE' if adapter else 'CONNECTOME OFFLINE', (x, 28), (133, 229, 189))
         renderer.text(f'{adapter.brain.n:,} simulated neurons' if adapter else 'Human / conventional controller', (x, 59), font=renderer.small)
+        role = {'brain': 'READOUT CONTROLS FLAPS', 'instinct': 'DNp01 REFLEX CONTROLS FLAPS'}.get(mode, 'TELEMETRY ONLY' if adapter else 'NO BRAIN REQUIRED')
+        renderer.text(role, (x, 80), (179, 197, 205), font=renderer.small)
         renderer.text('SENSORY INJECTION  /  SPIKE TRACE', (x, 103), font=renderer.small)
         for i, name in enumerate(CHANNELS):
             y = 137 + i * 31
