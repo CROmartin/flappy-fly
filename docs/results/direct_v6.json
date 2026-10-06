@@ -1,0 +1,247 @@
+{
+  "created_at": "2026-09-29T09:13:43.856985+00:00",
+  "git_commit": "e5ee0e3ec04e3dd66256d98603e01139e3476725",
+  "git_dirty": true,
+  "schema_version": 1,
+  "model_kind": "direct",
+  "flybrain_version": "0.1.0",
+  "config": {
+    "game": {
+      "width": 720,
+      "height": 600,
+      "ground_height": 40,
+      "fly_x": 170.0,
+      "fly_radius": 12.0,
+      "pipe_width": 72.0,
+      "pipe_speed": 155.0,
+      "pipe_spacing": 280.0,
+      "gap_size": 190.0,
+      "gap_margin": 55.0,
+      "max_gap_change": 95.0
+    },
+    "physics": {
+      "dt": 0.02,
+      "gravity": 850.0,
+      "flap_velocity": -270.0,
+      "max_fall_speed": 480.0
+    },
+    "encoder": {
+      "looming_gain": 0.65,
+      "target_gain": 1.0,
+      "velocity_gain": 0.55,
+      "sensor_range": 450.0,
+      "vertical_error_range": 160.0,
+      "max_fall_speed": 480.0,
+      "max_rise_speed": 270.0,
+      "fly_radius": 12.0,
+      "clearance_margin": 95.0,
+      "look_ahead": 0.24,
+      "dt": 0.02,
+      "gravity": 850.0,
+      "flap_velocity": -270.0,
+      "fly_x": 170.0,
+      "pipe_width": 72.0,
+      "pipe_speed": 155.0,
+      "arena_height": 600.0,
+      "ground_height": 40.0,
+      "map_version": 6,
+      "position_gate_range": 70.0
+    },
+    "brain": {
+      "device": "auto",
+      "dt": 0.02,
+      "trace_tau": 0.1,
+      "brain_steps_per_action": 1,
+      "threads": 4,
+      "instinct_threshold": 0.8
+    },
+    "control": {
+      "decision_threshold": 0.62,
+      "flap_cooldown": 0.14,
+      "oracle_horizon": 0.2,
+      "oracle_offset": 20.0,
+      "oracle_deadband": 12.0,
+      "ceiling_margin": 65.0,
+      "random_flap_probability": 0.06,
+      "too_high_flap_dampen": 0.92,
+      "too_low_flap_boost": 0.4
+    },
+    "training": {
+      "seed": 42,
+      "max_steps": 1500,
+      "components": 20,
+      "regularization": 0.1
+    },
+    "ui": {
+      "panel_width": 460,
+      "history_steps": 100,
+      "smoothing": 0.85
+    }
+  },
+  "feature_count": 3,
+  "feature_indices": [],
+  "device": "cpu",
+  "training_dataset": "data/datasets/oracle_v6.npz",
+  "dataset_sha256": "bbb0c3bdaa6d642adb32de87a378735f1015e90c36dc880d489644479b5ee3ef",
+  "dataset_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "training_samples": 1710,
+  "class_counts": {
+    "WAIT": 34872,
+    "FLAP": 1227,
+    "percent_flap": 3.3989861214992105
+  },
+  "balanced_class_counts": {
+    "WAIT": 855,
+    "FLAP": 855,
+    "percent_flap": 50.0
+  },
+  "split_seeds": {
+    "train": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "validation": [
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41
+    ],
+    "test": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ]
+  },
+  "metrics": {
+    "validation": {
+      "samples": 5144,
+      "precision_flap": 0.12937062937062938,
+      "recall_flap": 0.4277456647398844,
+      "f1_flap": 0.19865771812080538,
+      "accuracy": 0.8839424572317263,
+      "confusion_matrix": [
+        [
+          4473,
+          498
+        ],
+        [
+          99,
+          74
+        ]
+      ],
+      "threshold": 0.62
+    },
+    "test": {
+      "samples": 5785,
+      "precision_flap": 0.14387464387464388,
+      "recall_flap": 0.507537688442211,
+      "f1_flap": 0.2241953385127636,
+      "accuracy": 0.8791702679343129,
+      "confusion_matrix": [
+        [
+          4985,
+          601
+        ],
+        [
+          98,
+          101
+        ]
+      ],
+      "threshold": 0.62
+    }
+  },
+  "cv_auc_balanced": 0.8809586769264213,
+  "sha256": "8b991db9cbdf1a813982044a6331101d3e79b4eba4ff5e31504498d2db39d8ef"
+}

@@ -58,3 +58,55 @@ The first collector's brain timing metadata refers to its last episode; sidecars
 now explicitly label that scope. Logs contain each episode's timing. The collector
 was corrected to accumulate all neural steps for future runs. Evaluation timing
 already accumulated all evaluated episodes. No neural samples or outcomes changed.
+
+## Gap-threat encoder v3
+
+Physics, oracle teacher, readout class (20 PCA components, L2=.1, threshold=.5) and
+brain settings match baseline v1. Only the sensory map changes: LC4/LPLC2 now carry
+upper/lower wall-collision threat (`proximity ×` shortfall from `clearance_margin`),
+not identical pipe-distance looming. LC10a and LPLC1 still carry signed gap error and
+velocity. Direct baseline raw features are `[top_threat, bottom_threat, signed_error]`.
+Config: `configs/gap_threat_v3.json` (`fly_radius=12`, `clearance_margin=95`).
+Dataset/model/eval artifacts: `oracle_v3`, `flap_readout_v3`, `direct_readout_v3`,
+`evaluation_v3`. v1/v2 artifacts are retained unchanged.
+
+Closed-loop (seeds 10000–10029, 750 steps): random 0.23 mean pipes; oracle 6.70;
+instinct 0.00 (mean survival 0.84 s); fly readout v3 0.13 mean pipes (max 3, survival
+3.54 s); **direct logistic v3 7.00 mean pipes / 15.00 s** (every episode truncated at
+cap). Neural test F1 .215 (precision .123, recall .869). The wall/gap feature map is
+highly informative for a linear policy; the frozen-connectome readout still does not
+match that closed-loop performance.
+
+## Lookahead encoder v4
+
+Same physics/teacher/readout class as v3. Sensory map adds short-horizon imagination
+(`look_ahead=0.24 s`) using game `integrate` physics: LC4 = max(current upper threat,
+flap-trajectory risk); LPLC2 = max(current lower threat, wait-trajectory risk). Direct
+raw features are `[flap_risk, wait_risk, signed_error]`. Config `gap_threat_v4.json`.
+
+Closed-loop: random 0.23; oracle 6.70; instinct 0.00 (3.14 s); fly readout v4 **0.00**
+pipes (3.33 s); **direct v4 7.00 / 15.00 s**. Neural test F1 .217. Lookahead makes the
+“last safe flap” problem explicit for a linear controller; the connectome readout still
+fails to use it in closed loop.
+
+## Gated lookahead v5
+
+v4 falsely lit **wait fatal** while above the gap (falling could clip the upper lip).
+v5 scores flap risk only on upper hits and wait risk only on lower hits, then gates:
+flap-fatal × too_high, wait-fatal × too_low. `encoder.map_version=5`.
+
+Closed-loop: random 0.23; oracle 6.70; instinct **2.67** pipes (8.16 s); fly readout v5
+0.00 pipes (3.48 s); direct v5 4.13 pipes (10.60 s). Gating helped the DNp01 instinct
+path a lot; direct stayed strong but below the perfect v3/v4 cap; brain readout still
+fails closed-loop.
+
+## Height bias v6
+
+Readout was flap-happy (high recall). v6 strengthens too-high/too-low (`target_gain=1`,
+`position_gate_range=70`) and adds actuator bias: dampen P(FLAP) when too high, boost
+when too low, slightly higher decision threshold. Play can apply the actuator bias on
+v5 weights via `configs/play_v5_fall_bias.json`.
+
+Closed-loop (seeds 10000–10029, 750 steps): random 0.23; oracle 6.70; **instinct,
+brain, and direct all 7.00 mean pipes / 15.00 s** (every episode hit the cap). Height
+bias + stronger position channels finally let the policy wait/fall when too high.

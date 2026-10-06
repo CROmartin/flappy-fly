@@ -1,0 +1,243 @@
+{
+  "created_at": "2026-09-29T08:56:16.251250+00:00",
+  "git_commit": "e5ee0e3ec04e3dd66256d98603e01139e3476725",
+  "git_dirty": true,
+  "schema_version": 1,
+  "model_kind": "direct",
+  "flybrain_version": "0.1.0",
+  "config": {
+    "game": {
+      "width": 720,
+      "height": 600,
+      "ground_height": 40,
+      "fly_x": 170.0,
+      "fly_radius": 12.0,
+      "pipe_width": 72.0,
+      "pipe_speed": 155.0,
+      "pipe_spacing": 280.0,
+      "gap_size": 190.0,
+      "gap_margin": 55.0,
+      "max_gap_change": 95.0
+    },
+    "physics": {
+      "dt": 0.02,
+      "gravity": 850.0,
+      "flap_velocity": -270.0,
+      "max_fall_speed": 480.0
+    },
+    "encoder": {
+      "looming_gain": 0.8,
+      "target_gain": 0.8,
+      "velocity_gain": 0.8,
+      "sensor_range": 450.0,
+      "vertical_error_range": 160.0,
+      "max_fall_speed": 480.0,
+      "max_rise_speed": 270.0,
+      "fly_radius": 12.0,
+      "clearance_margin": 95.0,
+      "look_ahead": 0.24,
+      "dt": 0.02,
+      "gravity": 850.0,
+      "flap_velocity": -270.0,
+      "fly_x": 170.0,
+      "pipe_width": 72.0,
+      "pipe_speed": 155.0,
+      "arena_height": 600.0,
+      "ground_height": 40.0
+    },
+    "brain": {
+      "device": "auto",
+      "dt": 0.02,
+      "trace_tau": 0.1,
+      "brain_steps_per_action": 1,
+      "threads": 4,
+      "instinct_threshold": 0.8
+    },
+    "control": {
+      "decision_threshold": 0.5,
+      "flap_cooldown": 0.12,
+      "oracle_horizon": 0.2,
+      "oracle_offset": 20.0,
+      "oracle_deadband": 12.0,
+      "ceiling_margin": 65.0,
+      "random_flap_probability": 0.06
+    },
+    "training": {
+      "seed": 42,
+      "max_steps": 1500,
+      "components": 20,
+      "regularization": 0.1
+    },
+    "ui": {
+      "panel_width": 460,
+      "history_steps": 100,
+      "smoothing": 0.85
+    }
+  },
+  "feature_count": 3,
+  "feature_indices": [],
+  "device": "cpu",
+  "training_dataset": "data/datasets/oracle_v4.npz",
+  "dataset_sha256": "1c6f7352b75566fbe674796c3f8075825a60d9f9add02c67265bd504abaa1f5d",
+  "dataset_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "training_samples": 1730,
+  "class_counts": {
+    "WAIT": 35155,
+    "FLAP": 1237,
+    "percent_flap": 3.399098703011651
+  },
+  "balanced_class_counts": {
+    "WAIT": 865,
+    "FLAP": 865,
+    "percent_flap": 50.0
+  },
+  "split_seeds": {
+    "train": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "validation": [
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41
+    ],
+    "test": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ]
+  },
+  "metrics": {
+    "validation": {
+      "samples": 5144,
+      "precision_flap": 0.1310517529215359,
+      "recall_flap": 0.9075144508670521,
+      "f1_flap": 0.2290299051787017,
+      "accuracy": 0.7945178849144634,
+      "confusion_matrix": [
+        [
+          3930,
+          1041
+        ],
+        [
+          16,
+          157
+        ]
+      ],
+      "threshold": 0.5
+    },
+    "test": {
+      "samples": 5785,
+      "precision_flap": 0.12307692307692308,
+      "recall_flap": 0.9246231155778895,
+      "f1_flap": 0.21723730814639908,
+      "accuracy": 0.7707865168539326,
+      "confusion_matrix": [
+        [
+          4275,
+          1311
+        ],
+        [
+          15,
+          184
+        ]
+      ],
+      "threshold": 0.5
+    }
+  },
+  "cv_auc_balanced": 0.9001630451013132,
+  "sha256": "6a9908012a03ba55eaaf6f5be18cd74a862f762bae9d6c73e5e3ec865d1d21db"
+}

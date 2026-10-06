@@ -1,0 +1,1092 @@
+{
+  "created_at": "2026-09-29T07:55:45.210332+00:00",
+  "git_commit": "e5ee0e3ec04e3dd66256d98603e01139e3476725",
+  "git_dirty": true,
+  "config": {
+    "game": {
+      "width": 720,
+      "height": 600,
+      "ground_height": 40,
+      "fly_x": 170.0,
+      "fly_radius": 12.0,
+      "pipe_width": 72.0,
+      "pipe_speed": 155.0,
+      "pipe_spacing": 280.0,
+      "gap_size": 190.0,
+      "gap_margin": 55.0,
+      "max_gap_change": 95.0
+    },
+    "physics": {
+      "dt": 0.02,
+      "gravity": 850.0,
+      "flap_velocity": -270.0,
+      "max_fall_speed": 480.0
+    },
+    "encoder": {
+      "looming_gain": 0.8,
+      "target_gain": 0.8,
+      "velocity_gain": 0.8,
+      "sensor_range": 450.0,
+      "vertical_error_range": 160.0,
+      "max_fall_speed": 480.0,
+      "max_rise_speed": 270.0,
+      "fly_radius": 12.0,
+      "clearance_margin": 95.0
+    },
+    "brain": {
+      "device": "auto",
+      "dt": 0.02,
+      "trace_tau": 0.1,
+      "brain_steps_per_action": 1,
+      "threads": 4,
+      "instinct_threshold": 0.8
+    },
+    "control": {
+      "decision_threshold": 0.5,
+      "flap_cooldown": 0.12,
+      "oracle_horizon": 0.2,
+      "oracle_offset": 20.0,
+      "oracle_deadband": 12.0,
+      "ceiling_margin": 65.0,
+      "random_flap_probability": 0.06
+    },
+    "training": {
+      "seed": 42,
+      "max_steps": 1500,
+      "components": 20,
+      "regularization": 0.1
+    },
+    "ui": {
+      "panel_width": 400,
+      "history_steps": 100,
+      "smoothing": 0.85
+    }
+  },
+  "seeds": [
+    10000,
+    10001,
+    10002,
+    10003,
+    10004,
+    10005,
+    10006,
+    10007,
+    10008,
+    10009,
+    10010,
+    10011,
+    10012,
+    10013,
+    10014,
+    10015,
+    10016,
+    10017,
+    10018,
+    10019,
+    10020,
+    10021,
+    10022,
+    10023,
+    10024,
+    10025,
+    10026,
+    10027,
+    10028,
+    10029
+  ],
+  "max_steps": 750,
+  "model": "models/flap_readout_v3.npz",
+  "direct_model": "models/direct_readout_v3.npz",
+  "results": {
+    "random": {
+      "summary": {
+        "episodes": 30,
+        "mean_score": 0.23333333333333334,
+        "median_score": 0.0,
+        "max_score": 1,
+        "mean_survival_time": 3.6400000000000006,
+        "median_survival_time": 3.48,
+        "pipes_passed": 7,
+        "percent_passing_one": 23.333333333333332,
+        "truncated_episodes": 0,
+        "wall_seconds": 0.04456908302381635,
+        "mean_brain_step_ms": null
+      },
+      "episodes": [
+        {
+          "seed": 10000,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10001,
+          "score": 0,
+          "survival_time": 3.92,
+          "truncated": false
+        },
+        {
+          "seed": 10002,
+          "score": 0,
+          "survival_time": 1.84,
+          "truncated": false
+        },
+        {
+          "seed": 10003,
+          "score": 0,
+          "survival_time": 2.38,
+          "truncated": false
+        },
+        {
+          "seed": 10004,
+          "score": 1,
+          "survival_time": 5.28,
+          "truncated": false
+        },
+        {
+          "seed": 10005,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10006,
+          "score": 0,
+          "survival_time": 2.66,
+          "truncated": false
+        },
+        {
+          "seed": 10007,
+          "score": 1,
+          "survival_time": 5.28,
+          "truncated": false
+        },
+        {
+          "seed": 10008,
+          "score": 0,
+          "survival_time": 3.46,
+          "truncated": false
+        },
+        {
+          "seed": 10009,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10010,
+          "score": 0,
+          "survival_time": 2.34,
+          "truncated": false
+        },
+        {
+          "seed": 10011,
+          "score": 0,
+          "survival_time": 3.36,
+          "truncated": false
+        },
+        {
+          "seed": 10012,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10013,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10014,
+          "score": 1,
+          "survival_time": 5.28,
+          "truncated": false
+        },
+        {
+          "seed": 10015,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10016,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10017,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10018,
+          "score": 1,
+          "survival_time": 5.28,
+          "truncated": false
+        },
+        {
+          "seed": 10019,
+          "score": 1,
+          "survival_time": 5.28,
+          "truncated": false
+        },
+        {
+          "seed": 10020,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10021,
+          "score": 0,
+          "survival_time": 3.2800000000000002,
+          "truncated": false
+        },
+        {
+          "seed": 10022,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10023,
+          "score": 0,
+          "survival_time": 3.54,
+          "truncated": false
+        },
+        {
+          "seed": 10024,
+          "score": 0,
+          "survival_time": 1.9000000000000001,
+          "truncated": false
+        },
+        {
+          "seed": 10025,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10026,
+          "score": 0,
+          "survival_time": 2.7800000000000002,
+          "truncated": false
+        },
+        {
+          "seed": 10027,
+          "score": 0,
+          "survival_time": 2.22,
+          "truncated": false
+        },
+        {
+          "seed": 10028,
+          "score": 1,
+          "survival_time": 5.28,
+          "truncated": false
+        },
+        {
+          "seed": 10029,
+          "score": 1,
+          "survival_time": 5.5600000000000005,
+          "truncated": false
+        }
+      ]
+    },
+    "oracle": {
+      "summary": {
+        "episodes": 30,
+        "mean_score": 6.7,
+        "median_score": 7.0,
+        "max_score": 7,
+        "mean_survival_time": 14.645333333333333,
+        "median_survival_time": 15.0,
+        "pipes_passed": 201,
+        "percent_passing_one": 100.0,
+        "truncated_episodes": 26,
+        "wall_seconds": 0.1794056249782443,
+        "mean_brain_step_ms": null
+      },
+      "episodes": [
+        {
+          "seed": 10000,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10001,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10002,
+          "score": 3,
+          "survival_time": 8.96,
+          "truncated": false
+        },
+        {
+          "seed": 10003,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10004,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10005,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10006,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10007,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10008,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10009,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10010,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10011,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10012,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10013,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10014,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10015,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10016,
+          "score": 6,
+          "survival_time": 14.8,
+          "truncated": false
+        },
+        {
+          "seed": 10017,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10018,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10019,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10020,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10021,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10022,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10023,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10024,
+          "score": 4,
+          "survival_time": 11.22,
+          "truncated": false
+        },
+        {
+          "seed": 10025,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10026,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10027,
+          "score": 6,
+          "survival_time": 14.38,
+          "truncated": false
+        },
+        {
+          "seed": 10028,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10029,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        }
+      ]
+    },
+    "instinct": {
+      "summary": {
+        "episodes": 30,
+        "mean_score": 0.0,
+        "median_score": 0.0,
+        "max_score": 0,
+        "mean_survival_time": 0.84,
+        "median_survival_time": 0.84,
+        "pipes_passed": 0,
+        "percent_passing_one": 0.0,
+        "truncated_episodes": 0,
+        "wall_seconds": 5.5896127500454895,
+        "mean_brain_step_ms": 4.3774353597120985
+      },
+      "episodes": [
+        {
+          "seed": 10000,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10001,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10002,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10003,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10004,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10005,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10006,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10007,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10008,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10009,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10010,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10011,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10012,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10013,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10014,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10015,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10016,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10017,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10018,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10019,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10020,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10021,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10022,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10023,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10024,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10025,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10026,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10027,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10028,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        },
+        {
+          "seed": 10029,
+          "score": 0,
+          "survival_time": 0.84,
+          "truncated": false
+        }
+      ]
+    },
+    "brain": {
+      "summary": {
+        "episodes": 30,
+        "mean_score": 0.13333333333333333,
+        "median_score": 0.0,
+        "max_score": 3,
+        "mean_survival_time": 3.5426666666666673,
+        "median_survival_time": 3.48,
+        "pipes_passed": 4,
+        "percent_passing_one": 6.666666666666667,
+        "truncated_episodes": 0,
+        "wall_seconds": 23.671385542023927,
+        "mean_brain_step_ms": 4.369492176701103
+      },
+      "episodes": [
+        {
+          "seed": 10000,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10001,
+          "score": 0,
+          "survival_time": 2.96,
+          "truncated": false
+        },
+        {
+          "seed": 10002,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10003,
+          "score": 0,
+          "survival_time": 3.2,
+          "truncated": false
+        },
+        {
+          "seed": 10004,
+          "score": 0,
+          "survival_time": 3.3200000000000003,
+          "truncated": false
+        },
+        {
+          "seed": 10005,
+          "score": 0,
+          "survival_time": 2.9,
+          "truncated": false
+        },
+        {
+          "seed": 10006,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10007,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10008,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10009,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10010,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10011,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10012,
+          "score": 0,
+          "survival_time": 2.7800000000000002,
+          "truncated": false
+        },
+        {
+          "seed": 10013,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10014,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10015,
+          "score": 3,
+          "survival_time": 8.94,
+          "truncated": false
+        },
+        {
+          "seed": 10016,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10017,
+          "score": 0,
+          "survival_time": 2.34,
+          "truncated": false
+        },
+        {
+          "seed": 10018,
+          "score": 0,
+          "survival_time": 3.0,
+          "truncated": false
+        },
+        {
+          "seed": 10019,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10020,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10021,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10022,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10023,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10024,
+          "score": 0,
+          "survival_time": 2.86,
+          "truncated": false
+        },
+        {
+          "seed": 10025,
+          "score": 0,
+          "survival_time": 2.88,
+          "truncated": false
+        },
+        {
+          "seed": 10026,
+          "score": 0,
+          "survival_time": 3.18,
+          "truncated": false
+        },
+        {
+          "seed": 10027,
+          "score": 1,
+          "survival_time": 5.28,
+          "truncated": false
+        },
+        {
+          "seed": 10028,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        },
+        {
+          "seed": 10029,
+          "score": 0,
+          "survival_time": 3.48,
+          "truncated": false
+        }
+      ]
+    },
+    "direct": {
+      "summary": {
+        "episodes": 30,
+        "mean_score": 7.0,
+        "median_score": 7.0,
+        "max_score": 7,
+        "mean_survival_time": 15.0,
+        "median_survival_time": 15.0,
+        "pipes_passed": 210,
+        "percent_passing_one": 100.0,
+        "truncated_episodes": 30,
+        "wall_seconds": 0.48828874999890104,
+        "mean_brain_step_ms": null
+      },
+      "episodes": [
+        {
+          "seed": 10000,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10001,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10002,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10003,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10004,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10005,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10006,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10007,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10008,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10009,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10010,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10011,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10012,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10013,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10014,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10015,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10016,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10017,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10018,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10019,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10020,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10021,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10022,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10023,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10024,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10025,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10026,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10027,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10028,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        },
+        {
+          "seed": 10029,
+          "score": 7,
+          "survival_time": 15.0,
+          "truncated": true
+        }
+      ]
+    }
+  },
+  "model_sha256": {
+    "brain": "fa90e6b86e43c001a81b353a18f49cd98e492861ca2ac5b819a5daf6e74dfcb7",
+    "direct": "4c2e708a6b629396d166fe15c3cd1256e9b34e86a3aef40a9aa60518781bfda3"
+  },
+  "note": "Survival and score are capped for episodes marked truncated."
+}

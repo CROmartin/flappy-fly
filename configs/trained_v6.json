@@ -1,0 +1,73 @@
+{
+  "game": {
+    "width": 720,
+    "height": 600,
+    "ground_height": 40,
+    "fly_x": 170.0,
+    "fly_radius": 12.0,
+    "pipe_width": 72.0,
+    "pipe_speed": 155.0,
+    "pipe_spacing": 280.0,
+    "gap_size": 190.0,
+    "gap_margin": 55.0,
+    "max_gap_change": 95.0
+  },
+  "physics": {
+    "dt": 0.02,
+    "gravity": 850.0,
+    "flap_velocity": -270.0,
+    "max_fall_speed": 480.0
+  },
+  "encoder": {
+    "looming_gain": 0.65,
+    "target_gain": 1.0,
+    "velocity_gain": 0.55,
+    "sensor_range": 450.0,
+    "vertical_error_range": 160.0,
+    "max_fall_speed": 480.0,
+    "max_rise_speed": 270.0,
+    "fly_radius": 12.0,
+    "clearance_margin": 95.0,
+    "look_ahead": 0.24,
+    "dt": 0.02,
+    "gravity": 850.0,
+    "flap_velocity": -270.0,
+    "fly_x": 170.0,
+    "pipe_width": 72.0,
+    "pipe_speed": 155.0,
+    "arena_height": 600.0,
+    "ground_height": 40.0,
+    "map_version": 6,
+    "position_gate_range": 70.0
+  },
+  "brain": {
+    "device": "auto",
+    "dt": 0.02,
+    "trace_tau": 0.1,
+    "brain_steps_per_action": 1,
+    "threads": 4,
+    "instinct_threshold": 0.8
+  },
+  "control": {
+    "decision_threshold": 0.62,
+    "flap_cooldown": 0.14,
+    "oracle_horizon": 0.2,
+    "oracle_offset": 20.0,
+    "oracle_deadband": 12.0,
+    "ceiling_margin": 65.0,
+    "random_flap_probability": 0.06,
+    "too_high_flap_dampen": 0.92,
+    "too_low_flap_boost": 0.4
+  },
+  "training": {
+    "seed": 42,
+    "max_steps": 1500,
+    "components": 20,
+    "regularization": 0.1
+  },
+  "ui": {
+    "panel_width": 460,
+    "history_steps": 100,
+    "smoothing": 0.85
+  }
+}
