@@ -45,7 +45,10 @@ def play(mode='human', seed=42, config=None, model=None, max_steps=None, headles
     mode_keys = {pygame.K_1: 'human', pygame.K_2: 'random', pygame.K_3: 'oracle',
                  pygame.K_4: 'instinct', pygame.K_5: 'brain'}
 
-    def reset_episode():
+    def reset_episode(advance_seed=True):
+        nonlocal seed
+        if advance_seed:
+            seed += 1
         env.reset(seed)
         controller.reset(seed)
         teacher.reset(seed)
@@ -95,7 +98,8 @@ def play(mode='human', seed=42, config=None, model=None, max_steps=None, headles
                 if done:
                     print(f'Death history saved: {history.save(mode, seed, model)}', flush=True)
             renderer.draw(env, mode, best.get(mode, 0), clock.get_fps(), action, controller,
-                          history.rows, notice=notice, mean_frame_ms=1000 * frame_seconds / max(1, frames))
+                          history.rows, notice=notice, mean_frame_ms=1000 * frame_seconds / max(1, frames),
+                          seed=seed)
             frame_seconds += perf_counter() - start
             frames += 1
             if max_steps and frames >= max_steps:

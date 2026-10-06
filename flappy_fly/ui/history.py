@@ -16,9 +16,10 @@ class DecisionHistory:
 
     def append(self, state, controller, action, oracle_action):
         adapter = getattr(controller, 'adapter', None)
+        raw = self.encoder.raw(state)
         self.rows.append({'time': state.elapsed_time, 'vertical_error': state.bird_y - state.next_gap_center_y,
             'velocity': state.bird_velocity_y, 'distance': state.distance_to_pipe,
-            'looming': float(self.encoder.raw(state)[0]),
+            'looming': float(max(raw[0], raw[1])),
             'dnp01': adapter.dnp01_activity if adapter else None,
             'descending': adapter.descending_activity if adapter else None,
             'flap_probability': getattr(controller, 'flap_probability', None),
